@@ -96,9 +96,7 @@ If TIMEOUT is provided, and no message arrives within the specified interval,
 returns primary and secondary value of NIL."
   (tagbody
      (or
-      ;;TODO: This is probably not right
-      (ignore-errors
-       (bt-semaphore:wait-on-semaphore (mailbox-semaphore mailbox) :timeout timeout))
+      (bt-semaphore:wait-on-semaphore (mailbox-semaphore mailbox) :timeout timeout)
       (return-from receive-message (values nil nil)))
      (multiple-value-bind (value ok) (queues:qpop (mailbox-queue mailbox))
        (if ok
