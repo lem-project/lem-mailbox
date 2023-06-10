@@ -3,6 +3,6 @@
 	       :queues :queues.simple-cqueue)
   :serial t
   :components ((:file "package")
-	       #-sbcl
+	       #+abcl
 	       (:file "atomic")
 	       (:file "lem-mailbox")))
